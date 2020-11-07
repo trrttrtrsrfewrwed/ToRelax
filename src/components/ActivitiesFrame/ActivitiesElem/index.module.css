@@ -1,0 +1,32 @@
+.wrapper {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+}
+
+.brow {
+    width: min(100vw, 320px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brow > *:first-child {
+    word-wrap: break-word;
+    max-width: 50%;
+}
+
+.brow > * {
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-block-start: 2px;
+    margin-block-end: 2px;
+}
+
+.last_brow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
