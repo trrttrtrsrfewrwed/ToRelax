@@ -31,9 +31,9 @@ function getMax(data, minutes) {
             console.log("curr_minutes", curr_minutes)
             let curr = getMax(curr_data, minutes - getMinutes(removed[0].time))
             console.log("curr", curr)
-            if (curr.sum + removed[0].rating > max_sum) {
+            if (curr.sum + removed[0].rating * curr_minutes > max_sum) {
                 console.log("updating max data")
-                max_sum = curr.sum;
+                max_sum = curr.sum + removed[0].rating * curr_minutes; 
                 max_data = removed.concat(curr.data)
                 console.log("max data", max_data)
             }
