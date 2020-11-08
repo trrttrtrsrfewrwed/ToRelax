@@ -11,19 +11,3 @@ export function fetchMINIMIZING(id) {
         id
     }
 }
-
-
-export function fetchSET(id, data) {
-    return {
-        type: 'SET',
-        id,
-        data
-    }
-}
-
-export function fetchREMOVE(id) {
-    return {
-        type: 'REMOVE',
-        id
-    }
-}

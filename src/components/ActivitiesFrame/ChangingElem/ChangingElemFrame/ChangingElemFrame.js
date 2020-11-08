@@ -9,15 +9,19 @@ import ChoosingCategory from '../../ChoosingCategory/ChoosingCategory';
 import TimeInput from '../../../TimeInput/TimeInput'
 import Button from '../../../Button/Button'
 
+export function checkTime(time) {
+    if (time.length !== 5) {
+        return false;
+    }
+    let pattern=/^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/
+    return pattern.test(time)
+}
+
 function checkReady(store) {
     if (store.name === "") {
         return false;
     }
-    if (store.duration.length !== 5) {
-        return false;
-    }
-    let pattern=/^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/
-    return pattern.test(store.duration)
+    return checkTime(store.duration)
 }
 
 function ChangingElemFrame(props) {

@@ -1,7 +1,7 @@
 import styles from './index.module.css';
 import {connect} from 'react-redux'
 import ActivitiesElem from '../ActivitiesElem/ActivitiesElem'
-import {fetchMAXIMIZING, fetchMINIMIZING, fetchSET, fetchREMOVE} from '../../../actions/activities/activitiesList'
+import {fetchMAXIMIZING, fetchMINIMIZING} from '../../../actions/activities/activitiesList'
 import React, {useState} from 'react';
 import Text from '../../Text/Text'
 import Button from '../../Button/Button'
@@ -19,6 +19,7 @@ function ActivitiesList(props) {
         time: "",
         rating: 1
     })
+    const {list} = props
 
     const changeElem = (id, data) => {
         if (data) {
@@ -52,13 +53,47 @@ function ActivitiesList(props) {
                      rating: 1})
     }
     const onSubmit = (data) => {
-        props.dispatch(fetchSET(changing.id, data))
+        let flg = false;
+        let tmp = list.map(elem=>{
+          if (elem.id === changing.id) {
+            flg = true;
+            return {
+              id: changing.id,
+              name: data.name,
+              category: data.category,
+              description: data.description,
+              time: data.duration,
+              rating: data.rating,
+              minimized: true
+            }
+          } 
+          return elem;
+        }) 
+        if (!flg) {
+          props.set_data([
+            ...list,
+            {
+                id: changing.id,
+                name: data.name,
+                category: data.category,
+                description: data.description,
+                time: data.duration,
+                rating: data.rating,
+                minimized: true
+            }
+          ])
+        } else {
+          props.set_data(tmp);
+        }
         onCancel()
     }
-    const {list} = props
+    
+    //props.set_data(list)
     const expand = (id) => props.dispatch(fetchMAXIMIZING(id))
     const contract = (id) => props.dispatch(fetchMINIMIZING(id))
-    const remove = (id) => props.dispatch(fetchREMOVE(id))
+    const remove = (id) => {
+        props.set_data(list.filter(elem => (elem.id !== id))) 
+    }
     return (
         <div>
             <div className = {styles.header}>
