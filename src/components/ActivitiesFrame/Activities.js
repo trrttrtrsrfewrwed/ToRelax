@@ -14,9 +14,14 @@ function Activities(props) {
         console.log(props.email)
         props.setData(data, props.email)
     }
+    let onToMain =(event) => {
+      event.preventDefault();
+      
+      props.history.push('/');
+    }
     return (
         <Provider store={store}>
-            <ActivitiesList set_data = {set_data}/>
+            <ActivitiesList set_data = {set_data} onToMain = {onToMain}/>
         </Provider>
     )
 }

@@ -2,6 +2,10 @@
     width: min(100vw, 320px);
 }
 
+.activities_list > * {
+    margin-bottom: 5px;
+}
+
 .brow1 {
     position: absolute;
     left: 50%;
@@ -22,4 +26,12 @@
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
+}
+
+.btn {
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -88px)
 }

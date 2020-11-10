@@ -10,6 +10,8 @@ import ChangingElem from '../ChangingElem/ChangingElem'
 
 
 function ActivitiesList(props) {
+    const [filter, setFilter] = useState("")
+
     const [changing, setChanging] = useState({
         flg: false,
         id: Date.now(),
@@ -19,7 +21,7 @@ function ActivitiesList(props) {
         time: "",
         rating: 1
     })
-    const {list} = props
+    const list = props.list
 
     const changeElem = (id, data) => {
         if (data) {
@@ -86,6 +88,7 @@ function ActivitiesList(props) {
           props.set_data(tmp);
         }
         onCancel()
+        setFilter("")
     }
     
     //props.set_data(list)
@@ -94,20 +97,30 @@ function ActivitiesList(props) {
     const remove = (id) => {
         props.set_data(list.filter(elem => (elem.id !== id))) 
     }
+    let filtered_list = list.filter(elem => {
+        return elem.name.toLowerCase().startsWith(filter.toLowerCase()) 
+    })
     return (
         <div>
             <div className = {styles.header}>
                     <Text textStyle={1} color_name={"blue"}>My activities</Text>
                     <div className = {styles.brow1}>  
-                        <Input placeholder="Search"/>
+                        <Input placeholder="Search" onChange = {(event) => {
+                            setFilter(event.target.value)
+                        }}/>
                         <Button buttonStyle = {2} onClick = {() => {changeElem(Date.now(), 0)}}>+</Button>
                     </div> 
             </div>
 
             <div className = {styles.activities_list}>
-                {list.map(elem =>
+                {filtered_list.map(elem =>
                         <ActivitiesElem key = {elem.id} props={elem} expand={expand} contract={contract} change = {() => {changeElem(elem.id, elem)}} remove = {() => remove(elem.id)}>
                         </ActivitiesElem>)}
+            </div>
+            <div className = {styles.btn}>
+                <Button onClick = {props.onToMain}>
+                        Enter relax time
+                </Button> 
             </div>
             {changing.flg && 
             <ChangingElem data = {{
