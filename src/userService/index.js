@@ -1,15 +1,17 @@
 let data = [
     {user: {login: "trrttrtrsrfewrwed", email: "nurgaliev.tr@phystech.edu"},
      password: "qwerty", data: [{id: 1, name: "Пошутить", category: "outdoors", description: "Смешно пошутить", time: "12:22", rating: 4, minimized: true},
-     {id: 2, name: "Пошутить", category: "outdoors", description: "Смешно пошутить", time: "00:10", rating: 5, minimized: true},
-     {id: 3, name: "Пошутить", category: "outdoors", description: "Смешно пошутить", time: "00:20", rating: 4, minimized: true},]}
+     {id: 2, name: "Пошутить", category: "outdoors", description: "Смешно пошутить", time: "00:01", rating: 5, minimized: true},
+     {id: 3, name: "Пошутить", category: "outdoors", description: "Смешно пошутить", time: "00:01", rating: 4, minimized: true},
+     {id: 4, name: "Пошутить", category: "outdoors", description: "Смешно пошутить", time: "00:01", rating: 4, minimized: true},
+    ]}
 ]
 
 function resolveAfter2Seconds(x) {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(x);
-      }, 2000);
+      }, 2);
     });
 }
 

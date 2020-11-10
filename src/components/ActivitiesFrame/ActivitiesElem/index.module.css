@@ -30,3 +30,19 @@
     align-items: flex-end;
     margin-bottom: 10px;
 }
+
+.start {
+    transform: translateY(-100vh) scaleY(0.1);
+    -webkit-transform: translateY(-100vh) scaleY(0.1);
+    -o-transform: translateY(-100vh) scaleY(0.1); 
+    -moz-transform: translateY(-100vh) scaleY(0.1); 
+}
+
+.moving {
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    transform: translateY(0px) scaleY(1);
+    -webkit-transform: translateY(0px) scaleY(1); /** Chrome & Safari **/
+    -o-transform: translateY(0px) scaleY(1); /** Opera **/
+    -moz-transform: translateY(0px) scaleY(1); /** Firefox **/
+}

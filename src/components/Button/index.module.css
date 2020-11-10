@@ -4,7 +4,8 @@
     padding: 0 1vw;
     border-radius: 2.5vh;
     border: 0.3vh solid #8797EB;
-    color: #FFFFFF;
+    color: #8797EB;
+    background-color: white;
     cursor: pointer;
 }
 
@@ -14,6 +15,11 @@
 }
 
 .button0:active {
+    background-color: #8797EB;
+    color: white;
+}
+
+.inversed:active {
     background-color: #C7CFFA;
 }
 

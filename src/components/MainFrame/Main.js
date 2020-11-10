@@ -33,7 +33,7 @@ function Main(props) {
                         }}></TimeInput>
                         <Button buttonStyle = {0} inversed= {true} disabled = {!checkTime(time)} onClick = {
                             () => {
-                                props.setRequest(time);
+                                props.setRequest({request: time});
                                 props.history.push('/response')
                             }
                         }>Submit</Button>
