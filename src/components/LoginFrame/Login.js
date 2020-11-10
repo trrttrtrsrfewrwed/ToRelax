@@ -90,33 +90,37 @@ function Login(props) {
   
       props.history.push('/signup');
     }
-
-    return (
-      <div className = {styles.mainFrame}>
-        <Text textStyle={0} color_name={"blue"}>#TORELAX</Text>
-        <form className={styles.wrapper}>
-            <div className={styles.brow}>
-                <div></div>
-                <Text textStyle={1} color_name={"blue"}>Login</Text>
-                <Button buttonStyle={1} onClick = {onToSignUp}>SignUp</Button>
-            </div>
-            <div className={styles.inputs}>
-              <Input type="email" placeholder="Email" onChange={onChangeEmail} value={user_data.email} error={user_data.emailError}/>
-              <Input type="password" placeholder="Password" onChange={onChangePassword} value={user_data.password} error={user_data.passwordError}/>
-            </div>
-            <div className={styles.buttons}>
-              <Button onClick={onLogin} buttonStyle={0} inversed={true}>Login</Button>
-            </div>
-            <p className={styles.error}>{user_data.errorText}</p>
-        </form>
-        <div></div>
-      </div>  
-    )
+    if (props.loading) {
+      return <h1>LOADING...</h1>
+    } else {
+      return (
+        <div className = {styles.mainFrame}>
+          <Text textStyle={0} color_name={"blue"}>#TORELAX</Text>
+          <form className={styles.wrapper}>
+              <div className={styles.brow}>
+                  <div></div>
+                  <Text textStyle={1} color_name={"blue"}>Login</Text>
+                  <Button buttonStyle={1} onClick = {onToSignUp}>SignUp</Button>
+              </div>
+              <div className={styles.inputs}>
+                <Input type="email" placeholder="Email" onChange={onChangeEmail} value={user_data.email} error={user_data.emailError}/>
+                <Input type="password" placeholder="Password" onChange={onChangePassword} value={user_data.password} error={user_data.passwordError}/>
+              </div>
+              <div className={styles.buttons}>
+                <Button onClick={onLogin} buttonStyle={0} inversed={true}>Login</Button>
+              </div>
+              <p className={styles.error}>{user_data.errorText}</p>
+          </form>
+          <div></div>
+        </div>  
+      )
+    }
 }
 
 const mapStateToProps = (state) => {
   return {
-    error: state.error
+    error: state.error,
+    loading: state.isFetching
   }
 }
 

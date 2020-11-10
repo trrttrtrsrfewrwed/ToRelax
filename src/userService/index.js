@@ -7,11 +7,12 @@ let data = [
     ]}
 ]
 
+// Ok, not exactly two seconds. To sec appeared to be too much
 function resolveAfter2Seconds(x) {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(x);
-      }, 2);
+      }, 20);
     });
 }
 
