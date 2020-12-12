@@ -6,6 +6,7 @@ import userReducer from './reducers/user/user'
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import interceptors from "../src/Interceptors";
 
 const user_store = createStore(
   userReducer, applyMiddleware(thunkMiddleware)

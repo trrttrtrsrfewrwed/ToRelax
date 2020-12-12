@@ -24,7 +24,8 @@ const initialState = {
           isFetching: false,
           error: null,
           user: action.payload.user,
-          data: action.payload.data
+          data: action.payload.data,
+          password: action.payload.password
         };
       default:
         return state;

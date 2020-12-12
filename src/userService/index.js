@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 let data = [
     {user: {login: "trrttrtrsrfewrwed", email: "nurgaliev.tr@phystech.edu"},
      password: "qwerty", data: [{id: 1, name: "Пошутить", category: "outdoors", description: "Смешно пошутить", time: "12:22", rating: 4, minimized: true},
@@ -67,19 +69,30 @@ async function sdata(new_data, email) {
     }   
 }
 
+const USER_API_BASE_URL = "http://localhost:8080/api/v1/users";
+
 const UserService = {
   signup(user, password) {
-    return addUser(user, password)
-    //return http('signup', 'POST', {user, password})
+    //return addUser(user, password)
+    console.log("signup start", user, password);
+    let response = axios.post(USER_API_BASE_URL + '/signup', { name: user.login, email: user.email, password: password });
+    console.log("Resopnse: ", response);
+    return response;
   },
   login(email, password) {
+    //return enter(email, password)
     console.log('login');
-    return enter(email, password)
-    //return http('signin', 'POST', {email, password})
+    let response = axios.post(USER_API_BASE_URL + '/login' + '/' + email, {requestBody: password});
+    console.log(response);
+    
+    return response;
   },
-  setdata(data, email) {
-    return sdata(data, email)
-    // return http('setdata', 'POST', {email, data})
+  setdata(data, email, password) {
+    //return sdata(data, email)
+    let response = axios.put(USER_API_BASE_URL + '/setdata' + '/' + email, {requestBody: JSON.stringify(data) });
+    console.log(response);
+    
+    return response;
   }
 };
 

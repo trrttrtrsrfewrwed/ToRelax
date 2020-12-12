@@ -12,7 +12,7 @@ function Activities(props) {
     let set_data = (data) => {
         console.log(data)
         console.log(props.email)
-        props.setData(data, props.email)
+        props.setData(data, props.email, props.password)
     }
     let onToMain =(event) => {
       event.preventDefault();
@@ -29,7 +29,8 @@ function Activities(props) {
 const mapStateToProps = (state) => {
     return {
       data: state.data, 
-      email: state.user.email
+      email: state.user.email,
+      password: state.password
     }
   };
 
